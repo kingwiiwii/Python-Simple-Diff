@@ -54,12 +54,14 @@ diff_file_time_start = time.time()
 
 line_no = 1
 diffs_found = False
+count = 0
 
 while f1_line != '' or f2_line != '':
 	f1_line = f1_line.rstrip()
 	f2_line = f2_line.rstrip()
 	if f1_line != f2_line:
 		diffs_found = True
+		count += 1
 		if f2_line == '' and f1_line != '':
 			print">+", "Line-%d" % line_no, f1_line
 		elif f1_line != '':
@@ -85,4 +87,4 @@ print
 if diffs_found == False:
 	print "Complete, files identical."
 elif diffs_found == True:
-	print "Complete, differences found."
+	print "Complete, ",count, "differences found."
